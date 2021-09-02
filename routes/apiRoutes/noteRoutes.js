@@ -7,8 +7,7 @@ const {
 const { notes } = require('../../db/db');
 
 router.get('/notes', (req, res) => {
-    let results = notes;
-    res.json(results);
+    res.json(notes);
 });
 
 router.get('/notes/:id', (req, res) => {
