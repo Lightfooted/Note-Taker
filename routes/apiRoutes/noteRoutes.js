@@ -6,6 +6,7 @@ const {
   deleteNote
 } = require('../../lib/note');
 const { notes } = require('../../db/db');
+const { nanoid } = require('nanoid');
 
 router.get('/notes', (req, res) => {
     res.json(notes);
@@ -21,7 +22,7 @@ router.get('/notes/:id', (req, res) => {
 });
 
 router.post('/notes', (req, res) => {
-    req.body.id = notes.length.toString();
+    req.body.id = nanoid();
 
     if(!validateNotes(req.body)) {
         res.status(400).send('The note is not properly formatted.');
